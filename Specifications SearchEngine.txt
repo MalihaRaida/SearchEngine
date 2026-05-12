@@ -1,0 +1,209 @@
+﻿Search Engine
+1. Purpose
+The Search Engine allows users to add documents from web sites and search those documents using keywords. The system stores document information locally so that searches can be performed quickly without revisiting the original websites.
+
+
+2. Scope
+
+
+The system supports:
+* Searching documents by title.
+* Searching documents using one keyword.
+* Refining a search using additional keywords.
+* Adding documents from multiple URLs.
+* Ranking matching documents by keyword frequency.
+* Storing fetched documents locally for later viewing.
+
+
+The system does not support removing documents, advanced Boolean queries, phrase searches, or automatic website updates in the current version.
+
+
+3. Functional Requirements
+FR1: Start Search Engine
+The system shall start with a predefined list of uninteresting words.
+The system shall load uninteresting words from a private file.
+The system shall begin with an empty document collection.
+
+
+FR2: Add Documents from URL
+The user shall be able to provide a URL containing documents.
+The system shall fetch documents from the given URL.
+The system shall add only new documents to the collection.
+If a document has the same title as an existing document, the system shall treat it as a duplicate.
+The system shall allow users to add documents at any time.
+The system shall not allow documents to be removed.
+
+
+FR3: Search by Title
+The user shall be able to search for a document using its title.
+If the title exists, the system shall make that document available for viewing.
+If the title does not exist, the system shall notify the user.
+
+
+FR4: Keyword Query
+The user shall be able to search using a single keyword.
+The keyword shall not be an uninteresting word.
+The system shall return all documents that contain the keyword.
+The results shall be ordered by the number of times the keyword appears in each document.
+
+
+FR5: Refine Query
+The user shall be able to refine an existing query by adding another keyword.
+The added keyword shall not be an uninteresting word.
+The added keyword shall not already be part of the current query.
+The system shall return only documents that contain all query keywords.
+The results shall be reordered based on total keyword occurrences.
+
+
+FR6: View Match Result
+The user shall be able to select a result from the match list.
+The system shall make the selected matching document available for viewing.
+
+
+4. Non-Functional Requirements
+NFR1: Performance
+The system shall perform searches using locally stored information.
+The system shall not revisit websites during query execution.
+The system shall use internal data structures or indexes to make searching efficient.
+
+
+NFR2: Storage
+The system shall store document title, source URL, body text, and word information.
+The system shall store enough document information so users can view matched documents even if the original website is unavailable.
+
+
+NFR3: Availability
+If an internal system failure occurs, the system may terminate.
+
+
+Recovery from storage or media failure is not required in this version.
+
+
+5. Error Handling Requirements
+ER1: Invalid Keyword
+If the user enters an uninteresting word as a keyword, the system shall notify the user.
+
+
+ER2: No Matching Documents
+If no documents contain the keyword, the system shall return an empty result set.
+
+
+ER3: Invalid URL
+If the user provides a URL that does not exist, the system shall notify the user.
+
+
+ER4: URL Without Documents
+If the URL does not contain valid documents, the system shall notify the user.
+
+
+ER5: Duplicate URL
+If the URL has already been added, the system shall notify the user.
+
+
+ER6: Duplicate Document
+
+
+If the same document appears at multiple sites, the system shall store it only once.
+Documents are considered identical if they have the same title.
+
+
+6. Data Requirements
+
+
+The system shall maintain the following data:
+Document
+* Title
+* Body
+* Source URL
+* Word entries
+
+
+Word Entry
+* Word
+* Position/index in document
+Related document
+
+
+Keyword Set
+* Current query keywords
+
+
+Match Set
+* Documents matching the current query
+* Match ranking index
+* Keyword occurrence count
+
+
+Uninteresting Word Set
+* Words that cannot be used as keywords, such as “and” or “the”
+
+
+7. Constraints
+* A document title must uniquely identify a document.
+* A keyword cannot be an uninteresting word.
+* A refined query must contain at least one existing keyword.
+* A document matches a query only if it contains all keywords in the current query.
+* Search results must be ordered from highest keyword occurrence count to lowest.
+
+
+8. System Operations
+
+
+startEngine()
+Description: Starts the search engine.
+Precondition: The private file of uninteresting words exists.
+Postcondition:
+The system loads uninteresting words and initializes all other data sets as empty.
+
+
+addDocuments(URL u)
+Description: Adds documents from a URL.
+Checks:
+URL has not already been added.
+URL exists.
+URL contains valid documents.
+
+
+Postcondition:
+URL is added to the system.
+New documents from the URL are stored.
+Duplicate documents are ignored.
+If a query is active, matching results are updated.
+
+
+query(String word)
+Description: Starts a new keyword search.
+Checks:
+Word is not uninteresting word.
+Postcondition:
+Current keyword set becomes {word}.
+Matching documents are found.
+Results are ranked by keyword frequency.
+
+
+queryMore(String word)
+Description: Refines the current query.
+Checks:
+A query is already active.
+Word is not an uninteresting word.
+Word is not already in the keyword set.
+Postcondition:
+Word is added to the keyword set.
+Match results are filtered to documents containing all keywords.
+Results are ranked again.
+
+
+makeCurrent(String title)
+Description: Selects a document by title.
+Checks:
+Title exists in the document collection.
+Postcondition:
+The matching document becomes the current document.
+
+
+makeCurMatch(Integer index)
+Description: Selects a document from the current search results.
+Checks:
+Index is a valid result index.
+Postcondition:
+The selected match becomes the current match.
