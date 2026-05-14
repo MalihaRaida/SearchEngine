@@ -22,4 +22,17 @@
       // EFFECTS: Adds all interesting words of d to this with a count
       // of their number of occurrences.
 
+
+Vector lookup (String k)
+// requires: k is not null.
+// effects: Returns a vector of DocCnts where the Doc contains k cnt times.
+Hashtable addDoc (Doc d)
+// requires: d is not null
+// modifies: this
+// effects: Adds information about d’s interesting words and their
+// number of occurrences to this; also returns a table mapping each
+// interesting word in d to its number of occurrences
+
+
+
    }

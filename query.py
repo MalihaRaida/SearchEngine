@@ -22,4 +22,11 @@ class Query {
         // NotPossibleException else makes this be the Doc
         // Corresponding to d.
 
+      void addDoc (Doc d, Hashtable h)
+// requires: d is not null and h maps strings (the interesting words
+// in d) to integers (the count of occurrences of the word in d).
+// modifies: this
+// effects: If each keyword of this is in h, adds d to matches of this.
+
+
    }
