@@ -70,7 +70,7 @@ class Engine:
         """
         try:
             # Initialize WordTable (loads uninteresting words)
-            self._word_table = WordTable(uninteresting_file)
+            self._word_table = WordTable()
             
             # Initialize TitleTable (empty)
             self._title_table = TitleTable()
@@ -134,7 +134,7 @@ class Engine:
         doc_count_pairs = self._word_table.lookup(normalized)
         
         # Add matching documents to query
-        matching_docs = [doc for doc, count in doc_count_pairs]
+        matching_docs = [dc.doc for dc in doc_count_pairs]
         self._current_query.set_matches(matching_docs)
         
         return self._current_query

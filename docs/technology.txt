@@ -1,0 +1,35 @@
+Title: Introduction to Python
+Python is a high-level programming language known for its simple readable syntax.
+It supports multiple programming paradigms including procedural object-oriented and
+functional programming. Python is widely used in web development data science
+automation and artificial intelligence applications.
+
+
+Title: Machine Learning Fundamentals
+Machine learning is a branch of artificial intelligence that enables computers to
+learn from data without being explicitly programmed. Algorithms build models from
+training data to make predictions or decisions. Common techniques include supervised
+learning unsupervised learning and reinforcement learning. Neural networks and deep
+learning have revolutionized the field of machine learning.
+
+
+Title: Web Development with JavaScript
+JavaScript is the primary programming language for building interactive web applications.
+It runs in the browser and enables dynamic content manipulation event handling and
+asynchronous communication with servers. Modern JavaScript frameworks like React
+Angular and Vue simplify the development of complex single-page web applications.
+
+
+Title: Database Systems and SQL
+A database management system stores organizes and retrieves structured data efficiently.
+SQL is the standard language for querying relational databases. Key concepts include
+tables indexes transactions and joins. Popular database systems include PostgreSQL
+MySQL SQLite and Microsoft SQL Server. NoSQL databases like MongoDB offer flexible
+document storage for unstructured data.
+
+
+Title: Cloud Computing Overview
+Cloud computing delivers computing services over the internet including servers storage
+databases networking software and analytics. Major cloud providers include Amazon Web
+Services Microsoft Azure and Google Cloud Platform. Cloud architecture enables scalable
+on-demand resource allocation reducing infrastructure costs for businesses.

@@ -95,5 +95,13 @@ class Doc:
         """
         return dict(self._word_counts)
 
+    def match_count(self, keywords: list) -> int:
+        """Return total occurrences of all keywords in this document's body."""
+        return sum(self._word_counts.get(k.lower(), 0) for k in keywords)
+
+    def contains_all_keywords(self, keywords) -> bool:
+        """Return True if every keyword appears at least once in the body."""
+        return all(self._word_counts.get(k.lower(), 0) > 0 for k in keywords)
+
     def __repr__(self) -> str:
         return f"Doc(title={self._title!r}, url={self._url!r})"

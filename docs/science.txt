@@ -1,0 +1,38 @@
+Title: The Theory of Evolution
+Evolution is the process of change in all forms of life over generations. Charles Darwin
+proposed the theory of natural selection where organisms with favorable traits survive
+and reproduce more successfully. Genetic mutations provide variation while natural
+selection drives adaptation to the environment. Evolution explains the diversity of
+species observed across the biological world.
+
+
+Title: Quantum Mechanics Basics
+Quantum mechanics describes the behavior of matter and energy at atomic and subatomic
+scales. Particles exhibit wave-particle duality and their properties are described by
+probability distributions. Key principles include Heisenberg uncertainty principle
+quantum entanglement and superposition. Quantum computing leverages these quantum
+properties to perform certain calculations exponentially faster than classical computers.
+
+
+Title: Climate Change and Global Warming
+Climate change refers to long-term shifts in global temperatures and weather patterns.
+Human activities such as burning fossil fuels release greenhouse gases including carbon
+dioxide and methane into the atmosphere. These gases trap heat causing global warming.
+Effects include rising sea levels more frequent extreme weather events and disruption
+of ecosystems and biodiversity worldwide.
+
+
+Title: The Human Genome Project
+The Human Genome Project was an international scientific research effort that sequenced
+and mapped all human genes known as the genome. Completed in 2003 it identified
+approximately twenty thousand protein coding genes. The project has advanced medicine
+by enabling genetic diagnosis of diseases gene therapy and personalized medicine
+approaches tailored to individual patients genetic profiles.
+
+
+Title: Black Holes and Spacetime
+A black hole is a region of spacetime where gravity is so strong that nothing not even
+light can escape. They form when massive stars collapse at the end of their life cycle.
+The boundary surrounding a black hole is called the event horizon. Einstein general
+theory of relativity predicts black holes and gravitational waves from black hole
+mergers have been directly detected by LIGO observatories.
