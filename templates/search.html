@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Keyword Search{% endblock %}
+
+{% block content %}
+<h1>Keyword Search</h1>
+
+<!-- ── New search ──────────────────────────────────────── -->
+<div class="card">
+  <h2 style="margin-bottom:0.75rem;">New Search</h2>
+  <form method="POST" action="{{ url_for('search') }}">
+    <div class="form-row">
+      <input type="text" name="keyword" placeholder="Enter a keyword (e.g. science)"
+             autofocus>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </form>
+</div>
+
+{% if error %}
+  <div class="alert alert-error">{{ error }}</div>
+{% endif %}
+
+<!-- ── Results ─────────────────────────────────────────── -->
+{% if results is not none %}
+  <div class="card">
+    {% if query_keys %}
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.5rem;">
+        <div>
+          <span style="font-weight:600; margin-right:0.4rem;">Keywords:</span>
+          <span class="keyword-strip" style="display:inline-flex; margin:0;">
+            {% for kw in query_keys %}<span class="kw-tag">{{ kw }}</span>{% endfor %}
+          </span>
+        </div>
+        <span class="badge">{{ results|length }} result{{ 's' if results|length != 1 }}</span>
+      </div>
+    {% endif %}
+
+    {% if results|length == 0 %}
+      <div class="alert alert-warning" style="margin-bottom:0;">No documents matched the query.</div>
+    {% else %}
+      <ul class="result-list">
+        {% for r in results %}
+        <li class="result-item">
+          <div class="result-body">
+            <div class="result-title">{{ r.title }}</div>
+            <div class="result-preview">{{ r.preview }}{% if r.preview|length == 150 %}…{% endif %}</div>
+            {% if r.url %}<div class="result-url">{{ r.url }}</div>{% endif %}
+          </div>
+          <a class="btn btn-secondary btn-sm" href="{{ url_for('view', idx=r.idx) }}">View</a>
+        </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+
+  <!-- ── Refine search ──────────────────────────────────── -->
+  <div class="card">
+    <h2 style="margin-bottom:0.75rem;">Refine Search</h2>
+    <p style="font-size:0.87rem; color:#666; margin-bottom:0.65rem;">
+      Add another keyword to narrow the results.  Only documents containing <em>all</em> keywords will be shown.
+    </p>
+    <form method="POST" action="{{ url_for('refine') }}">
+      <div class="form-row">
+        <input type="text" name="keyword" placeholder="Add another keyword">
+        <button type="submit" class="btn btn-primary">Refine</button>
+      </div>
+    </form>
+  </div>
+{% endif %}
+
+{% endblock %}

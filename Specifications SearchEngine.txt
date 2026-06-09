@@ -60,6 +60,19 @@ The user shall be able to select a result from the match list.
 The system shall make the selected matching document available for viewing.
 
 
+FR7: Web Application Frontend
+
+The system shall provide a web-based user interface for the Search Engine using Flask and HTML.
+The frontend shall allow users to interact with the search engine through a browser.
+The system shall provide pages or sections for:
+    Adding documents from a URL.
+    Searching documents by title.
+    Searching documents using a keyword.
+    Refining an existing keyword search.
+    Viewing ranked search results.
+    Selecting and viewing a matched document.
+The system shall display appropriate error messages for invalid URLs, duplicate URLs, invalid keywords, duplicate keywords, missing titles, and empty search results.
+
 4. Non-Functional Requirements
 NFR1: Performance
 The system shall perform searches using locally stored information.

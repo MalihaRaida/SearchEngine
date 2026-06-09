@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Search Engine – Home{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Search Engine</h1>
+<p style="color:#555; margin-bottom:0.5rem;">
+  Add web documents, search by keyword, refine your results, or look up a document by title.
+</p>
+
+<div class="feature-grid">
+  <a class="feature-card" href="{{ url_for('add') }}">
+    <div class="icon">&#10133;</div>
+    <h3>Add Documents</h3>
+    <p>Fetch and index documents from a URL for offline searching.</p>
+  </a>
+
+  <a class="feature-card" href="{{ url_for('search') }}">
+    <div class="icon">&#128269;</div>
+    <h3>Keyword Search</h3>
+    <p>Search indexed documents by keyword and rank results by frequency.</p>
+  </a>
+
+  <a class="feature-card" href="{{ url_for('find') }}">
+    <div class="icon">&#128196;</div>
+    <h3>Find by Title</h3>
+    <p>Look up and view a document directly using its exact title.</p>
+  </a>
+</div>
+{% endblock %}

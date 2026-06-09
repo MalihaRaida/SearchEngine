@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Find Document by Title{% endblock %}
+
+{% block content %}
+<h1>Find Document by Title</h1>
+
+<div class="card">
+  <form method="POST" action="{{ url_for('find') }}">
+    <label for="title" style="display:block; margin-bottom:0.4rem; font-weight:600;">Document Title</label>
+    <div class="form-row">
+      <input type="text" id="title" name="title" placeholder="Enter the exact document title"
+             value="{{ request.form.get('title', '') }}" autofocus>
+      <button type="submit" class="btn btn-primary">Find</button>
+    </div>
+  </form>
+</div>
+
+{% if error %}
+  <div class="alert alert-error">{{ error }}</div>
+{% endif %}
+
+{% if doc %}
+  <div class="card">
+    <h2>{{ doc.title() }}</h2>
+    {% if doc.url() %}
+      <p style="font-size:0.82rem; color:#888; margin-bottom:0.75rem;">Source: {{ doc.url() }}</p>
+    {% endif %}
+    <pre class="doc-body">{{ doc.body() }}</pre>
+  </div>
+{% endif %}
+
+{% endblock %}
