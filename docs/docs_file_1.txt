@@ -1,0 +1,11 @@
+Title: Python Programming
+Python programming language basics tutorial guide
+Python syntax variables functions loops
+
+Title: Data Structures
+Arrays lists trees graphs algorithms
+Python data structures implementation
+
+Title: Machine Learning
+Python machine learning algorithms neural networks
+Deep learning tensorflow models training

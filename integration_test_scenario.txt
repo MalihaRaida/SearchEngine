@@ -1,0 +1,562 @@
+IT-01: Add Documents and Search by Title
+
+Objective: Verify that documents added from a URL can be searched by title.
+
+Steps:
+
+Start the search engine.
+Add a valid URL containing documents.
+Search for the title of one of the added documents.
+
+Expected Result:
+The system finds the document and makes it available for viewing.
+
+IT-02: Add Documents and Perform a Keyword Search
+
+Objective: Verify that newly added documents are indexed and searchable.
+
+Steps:
+
+Start the search engine.
+Add a valid URL containing documents.
+Search using a valid keyword contained in one or more documents.
+
+Expected Result:
+All matching documents are returned and ranked by keyword frequency.
+
+IT-03: Add Multiple URLs and Search Across All Documents
+
+Objective: Verify that documents from multiple URLs are included in searches.
+
+Steps:
+
+Add documents from URL A.
+Add documents from URL B.
+Search for a keyword appearing in documents from both URLs.
+
+Expected Result:
+Matching documents from both URLs are returned in the search results.
+
+IT-04: Add Duplicate URL
+
+Objective: Verify interaction between URL management and document storage.
+
+Steps:
+
+Add a valid URL.
+Attempt to add the same URL again.
+
+Expected Result:
+The system displays a duplicate URL message and does not re-add the documents.
+
+IT-05: Duplicate Document Detection
+
+Objective: Verify that duplicate documents are not stored.
+
+Steps:
+
+Add URL A containing a document.
+Add URL B containing a document with the same title.
+Search for the document title.
+
+Expected Result:
+Only one copy of the document exists in the collection.
+
+IT-06: Refine an Existing Query
+
+Objective: Verify that query refinement works correctly.
+
+Steps:
+
+Add documents.
+Search using keyword "AI".
+Refine the query using keyword "testing".
+
+Expected Result:
+Only documents containing both keywords are displayed and results are re-ranked.
+
+IT-07: Add Documents While a Query Is Active
+
+Objective: Verify that search results are updated when new documents are added.
+
+Steps:
+
+Search for a keyword.
+Add a new URL containing documents with that keyword.
+
+Expected Result:
+The active result list is updated to include newly matching documents.
+
+IT-08: Select a Search Result for Viewing
+
+Objective: Verify interaction between search results and document viewing.
+
+Steps:
+
+Perform a keyword search.
+Select one of the returned matches.
+
+Expected Result:
+The selected document is displayed to the user.
+
+IT-09: Search by Title and View Document
+
+Objective: Verify title search integration with document viewing.
+
+Steps:
+
+Add documents.
+Search for an existing title.
+Open the returned document.
+
+Expected Result:
+The correct document is displayed.
+
+
+IT-10: Invalid URL Handling
+
+Objective: Verify error handling during document addition.
+
+Steps:
+
+Enter an invalid URL.
+Attempt to add documents.
+
+Expected Result:
+The system displays an appropriate error message and no documents are added.
+
+IT-11: Invalid Keyword Handling
+
+Objective: Verify validation during keyword searches.
+
+Steps:
+
+Enter an uninteresting word such as "the".
+Submit the search.
+
+Expected Result:
+The system rejects the keyword and displays an error message.
+
+IT-12: Complete Search Workflow
+
+Objective: Verify the full integration of major system components.
+
+Steps:
+
+Start the application.
+Add a valid URL.
+Search using a keyword.
+Refine the search with a second keyword.
+Select a matching document.
+
+Expected Result:
+The system successfully performs all operations and displays the selected document.
+
+IT-13: Homepage Availability and Navigation
+
+Objective: Verify that the homepage is accessible and links to all major features.
+
+Steps:
+
+Open the application root URL "/".
+Verify that the page loads successfully.
+Check that the page contains navigation links to /add, /search, and /find.
+
+Expected Result:
+The homepage returns a successful response and exposes navigation links to all main routes.
+
+
+IT-14: Add Documents With Empty URL
+
+Objective: Verify that submitting an empty URL in the add form is rejected with a validation error.
+
+Steps:
+
+Navigate to the /add page.
+Submit the add form with the URL field left blank.
+Observe the response.
+
+Expected Result:
+The system displays a URL-related validation error, remains on the add page, and does not attempt to index any documents.
+
+
+IT-15: Add Documents With Unsupported Protocol
+
+Objective: Verify that a URL using an unsupported protocol produces a user-facing error rather than a server crash.
+
+Steps:
+
+Navigate to the /add page.
+Enter a URL using an unsupported protocol (for example, "ftp://example.com/docs").
+Submit the add form.
+Observe the response.
+
+Expected Result:
+The system displays an error message indicating the protocol is not supported and does not return a 500-level error.
+
+
+IT-16: Add Multiple URLs and Find by Title From Second URL
+
+Objective: Verify that documents added from a second URL are available through title-based lookup.
+
+Steps:
+
+Add documents from URL A.
+Add documents from URL B.
+Use /find to search for a document title that exists only in URL B.
+Observe the response.
+
+Expected Result:
+The system successfully locates and displays the document from URL B by its exact title.
+
+
+IT-17: Search With Empty Keyword
+
+Objective: Verify that submitting a blank keyword in the search form is rejected.
+
+Steps:
+
+Navigate to the /search page.
+Submit the search form with the keyword field left blank.
+Observe the response.
+
+Expected Result:
+The system displays a keyword-related validation error and does not perform a search.
+
+
+IT-18: Search With No Matching Keyword Returns Empty Results
+
+Objective: Verify system behavior when a keyword matches no indexed document.
+
+Steps:
+
+Add documents from a valid URL.
+Search for a keyword that does not appear in any document (for example, "zymurgy").
+Inspect the search results.
+
+Expected Result:
+The system returns a successful response with zero matching results and does not display any document titles.
+
+
+IT-19: Search Result Ordering by Keyword Frequency
+
+Objective: Verify that search results are ranked by the number of keyword occurrences per document.
+
+Steps:
+
+Add documents from a valid URL where one document contains the target keyword more frequently than others.
+Search for that keyword (for example, "python").
+Inspect the ordering of returned document titles.
+
+Expected Result:
+The document with the highest keyword frequency appears before documents with fewer occurrences in the result list.
+
+
+IT-20: New Search Replaces Previous Active Query
+
+Objective: Verify that issuing a second search clears the prior active query and replaces it with the new one.
+
+Steps:
+
+Add documents from a valid URL.
+Perform a first search using keyword A (for example, "python") and observe the results.
+Perform a second search using keyword B (for example, "networks").
+Inspect the results of the second search.
+
+Expected Result:
+The result list reflects only keyword B, and documents matching solely keyword A are no longer shown.
+
+
+IT-21: Refine Search With Additional Keyword Narrows Results
+
+Objective: Verify that adding a second keyword via /refine reduces the result set to documents containing both keywords.
+
+Steps:
+
+Add documents from a valid URL.
+Search using keyword A (for example, "python") that matches multiple documents.
+Refine the active query by adding keyword B (for example, "networks").
+Inspect the refined result list.
+
+Expected Result:
+Only documents containing both keywords are returned; documents matching only keyword A are excluded.
+
+
+IT-22: Refine With Duplicate Keyword Shows Error
+
+Objective: Verify that attempting to refine with a keyword already present in the active query displays an error.
+
+Steps:
+
+Add documents from a valid URL.
+Search using keyword A (for example, "python").
+Attempt to refine the query using the same keyword A.
+Observe the response.
+
+Expected Result:
+The system retains the existing query and displays an error message indicating the keyword is already included.
+
+
+IT-23: Refine With Uninteresting Stop Word Shows Error
+
+Objective: Verify that submitting a stop word as a refinement keyword is rejected.
+
+Steps:
+
+Add documents from a valid URL.
+Search using a valid keyword (for example, "python") to establish an active query.
+Attempt to refine using an uninteresting stop word such as "and".
+Observe the response.
+
+Expected Result:
+The system rejects the refinement keyword and displays an error message asking for a more meaningful term.
+
+
+IT-24: Refine Search Without Active Query
+
+Objective: Verify that attempting to refine when no prior search has been made shows a graceful error.
+
+Steps:
+
+Add documents from a valid URL.
+Reset the engine so no active query exists.
+Navigate to /refine and submit a keyword.
+Observe the response.
+
+Expected Result:
+The system displays an error message indicating that no active query exists and does not return a 500-level error.
+
+
+IT-25: View Search Result by Index
+
+Objective: Verify that a search result can be viewed by its ranked position.
+
+Steps:
+
+Add documents from a valid URL.
+Perform a keyword search that returns at least one result.
+Navigate to /view/0 to open the top-ranked result.
+Inspect the displayed page.
+
+Expected Result:
+The page renders successfully and shows the title and body of the top-ranked document.
+
+
+IT-26: View Search Result With Out-of-Range Index
+
+Objective: Verify that an out-of-range result index is handled gracefully.
+
+Steps:
+
+Add documents from a valid URL.
+Perform a keyword search to establish an active result list.
+Navigate to /view/999 to request a result that does not exist.
+Observe the response.
+
+Expected Result:
+The system redirects or shows a user-friendly message and does not return a 500-level error.
+
+
+IT-27: View Result Without Active Query Redirects
+
+Objective: Verify that attempting to view a result when no active query exists redirects the user.
+
+Steps:
+
+Add documents from a valid URL.
+Reset the engine so no active query exists.
+Navigate to /view/0 without performing a search first.
+Observe the response.
+
+Expected Result:
+The system redirects to the search page or shows an appropriate message and does not return a 500-level error.
+
+
+IT-28: Find Document With Empty Title
+
+Objective: Verify that submitting an empty title in the find form is rejected.
+
+Steps:
+
+Navigate to the /find page.
+Submit the find form with the title field left blank.
+Observe the response.
+
+Expected Result:
+The system displays a title-related validation error and does not attempt to locate a document.
+
+
+IT-29: Find Nonexistent Document by Title
+
+Objective: Verify that searching for a title that does not exist shows a not-found error.
+
+Steps:
+
+Add documents from a valid URL.
+Navigate to /find and submit a title that is not present in any indexed document.
+Observe the response.
+
+Expected Result:
+The system returns a successful response containing a clear not-found message and no document body.
+
+
+IT-30: Find Works Independently of Active Search Query
+
+Objective: Verify that title-based find works regardless of any active search query state.
+
+Steps:
+
+Add documents from a valid URL.
+Perform a keyword search to set an active query.
+Navigate to /find and submit the exact title of an indexed document.
+Inspect the response.
+
+Expected Result:
+The correct document is returned by title, and the active keyword query state does not interfere with the result.
+
+
+IT-31: New Search Replaces Previous Query State
+
+Objective: Verify that submitting a second search discards the prior query and its result list.
+
+Steps:
+
+Add documents from a valid URL.
+Search using keyword A (for example, "python") and note the results.
+Search again using keyword B (for example, "networks").
+Inspect the results of the second search.
+
+Expected Result:
+The result list reflects only keyword B, and documents matching only keyword A are no longer shown.
+
+
+IT-32: Refine Retains Both Keywords in Active Query
+
+Objective: Verify that both the original and refined keywords are visible in the active query after refinement.
+
+Steps:
+
+Add documents from a valid URL.
+Search using keyword A (for example, "python").
+Refine the query by adding keyword B (for example, "networks").
+Inspect the page returned by /refine.
+
+Expected Result:
+The response page contains both keyword A and keyword B, confirming both are part of the current active query.
+
+
+IT-33: Search After Reset Then Refine Uses New Query
+
+Objective: Verify that refinement following a reset search applies to the new query, not the old one.
+
+Steps:
+
+Add documents from a valid URL.
+Perform a first search using keyword A (for example, "python").
+Perform a second search using keyword B (for example, "neural") to reset query state.
+Refine the query by adding keyword C (for example, "python").
+Observe results.
+
+Expected Result:
+The refined query combines keywords B and C (for example, "neural" and "python"), and results reflect only documents matching both of those keywords.
+
+
+IT-34: Add Documents With Valid URL Returns Success Confirmation
+
+Objective: Verify that a successful document add operation displays a confirmation to the user.
+
+Steps:
+
+Navigate to the /add page.
+Submit a valid file URL pointing to an existing document file.
+Observe the response body.
+
+Expected Result:
+The system returns a 200 response and the response body contains a success confirmation message.
+
+
+IT-35: Homepage Contains Search Keyword in Page Body
+
+Objective: Verify that the homepage prominently references the search feature.
+
+Steps:
+
+Open the application root URL "/".
+Inspect the returned page content.
+
+Expected Result:
+The homepage body contains the word "Search", confirming that the primary feature is surfaced on the landing page.
+
+
+IT-36: Engine Not Possible Error Surfaces as Non-500 Response
+
+Objective: Verify that engine-level errors due to no indexed documents produce a user-facing error rather than a crash.
+
+Steps:
+
+Start the application with no documents added.
+Navigate to /search and submit a valid keyword.
+Observe the HTTP status code and page content.
+
+Expected Result:
+The system returns a non-500 HTTP status code and presents an error or empty-results message to the user.
+
+
+IT-37: Communication Error During Add Shows Friendly Message
+
+Objective: Verify that an inaccessible file URL during add produces a user-facing error, not a server crash.
+
+Steps:
+
+Navigate to the /add page.
+Submit a file:// URL pointing to an absolutely nonexistent path (for example, "file:///absolutely/nonexistent/file.txt").
+Observe the response.
+
+Expected Result:
+The system returns HTTP 200 with a friendly error message and does not return a 500-level error.
+
+
+IT-38: Refine After Engine Reset Mid-Session Shows Error Not Crash
+
+Objective: Verify graceful error handling when the engine is reset between a search and a subsequent refine.
+
+Steps:
+
+Add documents from a valid URL.
+Perform a keyword search to establish an active query.
+Simulate an engine reset (for example, by clearing the engine state).
+Attempt to refine the query with a new keyword.
+Observe the response.
+
+Expected Result:
+The system does not crash, returns a non-500 response, and presents a user-visible error message indicating that refinement is not possible in the current state.
+
+
+IT-39: Add Two Sources Then Find From Each Independently
+
+Objective: Verify that documents from two separately added URLs can each be found by their individual titles.
+
+Steps:
+
+Add documents from URL A containing "Python Programming".
+Add documents from URL B containing "Space Exploration".
+Use /find to locate "Python Programming".
+Use /find to locate "Space Exploration".
+
+Expected Result:
+Both documents are found successfully, confirming that title-based lookup works across all indexed sources.
+
+
+IT-40: End-to-End Add Two Sources and Search Across Both
+
+Objective: Verify that a keyword appearing only in one of two added sources is found correctly.
+
+Steps:
+
+Add documents from URL A (containing Python-related content).
+Add documents from URL B (containing space-related content).
+Search for the keyword "exploration", which appears only in URL B.
+Observe the search results.
+
+Expected Result:
+The system returns documents from URL B (for example, "Space Exploration") and does not include unrelated documents from URL A.
