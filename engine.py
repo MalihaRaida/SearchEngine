@@ -209,9 +209,10 @@ class Engine:
         if u in self._urls:
             raise NotPossibleException(f"URL already added: {u}")
         
-        # Fetch documents from URL
+        # Fetch documents from URL (consume generator eagerly so exceptions
+        # raised inside the generator are caught here, not during iteration)
         try:
-            doc_strings = Comm.getDocs(u)
+            doc_strings = list(Comm.getDocs(u))
         except Exception as e:
             raise NotPossibleException(f"Cannot fetch documents from URL: {str(e)}")
         
